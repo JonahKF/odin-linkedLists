@@ -13,32 +13,58 @@ class LinkedList {
       this.head = newNode;
     } else {
       currentNode = this.head;
-      while (currentNode.next) {}
+      while (currentNode.next) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = newNode;
     }
+
+    this.size += 1;
   }
 
   // Add new node to front of list
   prepend(value) {
-    const n = new node(value);
+    const newNode = new node(value);
+    let currentNode;
+
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      currentNode = this.head;
+      this.head = newNode;
+      newNode.next = currentNode;
+    }
+
+    this.size += 1;
   }
 
-  size() {}
+  size() {
+    return this.size;
+  }
 
-  head() {}
+  head() {
+    return this.head;
+  }
 
-  tail() {}
+  tail() {
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
 
   at(index) {}
 
   pop() {}
 
-  contains() {}
+  contains(value) {}
 }
 
 class node {
   constructor(value = null) {
     this.value = value;
-    this.nextNode = null;
+    this.next = null;
   }
 }
 
