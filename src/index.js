@@ -55,7 +55,7 @@ class LinkedList {
   }
 
   at(index) {
-    if (index > this.size || index <= 0) return;
+    if (index > this.size || index < 0) return;
     let currentNode = this.head;
     for (let i = 0; i < index; i++) {
       currentNode = currentNode.next;
@@ -72,13 +72,38 @@ class LinkedList {
       for (let i = 0; i < this.size - 1; i++) {
         currentNode = currentNode.next;
       }
+      console.log(`Removed node: ${currentNode.value}`);
       currentNode.next = null;
     }
   }
 
-  contains(value) {}
+  contains(value) {
+    let currentNode;
+    if (!this.head) {
+      return;
+    } else {
+      currentNode = this.head;
+      for (let i = 0; i < this.size; i++) {
+        if (currentNode.value === value) return true;
+        currentNode = currentNode.next;
+      }
+      return false;
+    }
+  }
 
-  find(value) {}
+  find(value) {
+    let currentNode;
+    if (!this.head) {
+      return;
+    } else {
+      currentNode = this.head;
+      for (let i = 0; i < this.size; i++) {
+        if (currentNode.value === value) return i;
+        currentNode = currentNode.next;
+      }
+      return null;
+    }
+  }
 
   insertAt(value, index) {}
 
