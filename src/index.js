@@ -54,11 +54,37 @@ class LinkedList {
     return currentNode;
   }
 
-  at(index) {}
+  at(index) {
+    if (index > this.size || index <= 0) return;
+    let currentNode = this.head;
+    for (let i = 0; i < index; i++) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
 
-  pop() {}
+  pop() {
+    let currentNode;
+    if (!this.head) {
+      return;
+    } else {
+      currentNode = this.head;
+      for (let i = 0; i < this.size - 1; i++) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = null;
+    }
+  }
 
   contains(value) {}
+
+  find(value) {}
+
+  insertAt(value, index) {}
+
+  removeAt(index) {}
+
+  toString() {}
 }
 
 class node {
