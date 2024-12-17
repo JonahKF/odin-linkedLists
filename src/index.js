@@ -109,7 +109,23 @@ class LinkedList {
 
   removeAt(index) {}
 
-  toString() {}
+  toString() {
+    console.log("Converting Linked List to String:");
+    let string = "";
+    let currentNode;
+    if (!this.head) {
+      string = null;
+      return string;
+    } else {
+      currentNode = this.head;
+      while (currentNode.next) {
+        string += ` ( ${currentNode.value} ) ->`;
+        currentNode = currentNode.next;
+      }
+      string += ` ( ${currentNode.value} )`;
+      return string;
+    }
+  }
 }
 
 class node {
