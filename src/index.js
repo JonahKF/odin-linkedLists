@@ -97,7 +97,7 @@ class LinkedList {
       return;
     } else {
       currentNode = this.head;
-      for (let i = 0; i < this.size; i++) {
+      for (let i = 1; i < this.size + 1; i++) {
         if (currentNode.value === value) return i;
         currentNode = currentNode.next;
       }
@@ -109,7 +109,7 @@ class LinkedList {
     let currentNode;
     if (index > this.size - 1 || index < 0) return;
     currentNode = this.head;
-    for (let i = 0; i < index; i++) {
+    for (let i = 1; i < index - 1; i++) {
       currentNode = currentNode.next;
     }
     const newNode = new node(value);
@@ -117,9 +117,21 @@ class LinkedList {
     placeholder = currentNode.next;
     currentNode.next = newNode;
     newNode.next = placeholder;
+
+    this.size += 1;
   }
 
-  removeAt(index) {}
+  removeAt(index) {
+    let currentNode;
+    let previousNode;
+    if (index > this.size - 1 || index < 0) return;
+    currentNode = this.head;
+    for (let i = 1; i < index; i++) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+    }
+    previousNode.next = currentNode.next;
+  }
 
   toString() {
     console.log("Converting Linked List to String:");
@@ -134,7 +146,7 @@ class LinkedList {
         string += ` ( ${currentNode.value} ) ->`;
         currentNode = currentNode.next;
       }
-      string += ` ( ${currentNode.value} )`;
+      string += ` ( ${currentNode.value} ) -> ${null}`;
       return string;
     }
   }
@@ -168,4 +180,9 @@ console.log(list.toString());
 // console.log(list.find("poggers"));
 
 list.insertAt("poggers", 3);
+console.log(list.toString());
+
+console.log(list.size);
+console.log(list.find("turtle"));
+list.removeAt(3);
 console.log(list.toString());
